@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/catdad/runtime-required/issues"
   },
-  "homepage": "https://github.com/catdad/runtime-required#readme"
+  "homepage": "https://github.com/catdad/runtime-required#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  }
 }
