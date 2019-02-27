@@ -1,0 +1,25 @@
+{
+  "name": "runtime-required",
+  "version": "0.0.1",
+  "description": "runtime-required",
+  "main": "runtime-required.js",
+  "dependencies": {
+    "resolve-from": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catdad/runtime-required.git"
+  },
+  "author": "Kiril Vatev <vatev.1@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catdad/runtime-required/issues"
+  },
+  "homepage": "https://github.com/catdad/runtime-required#readme"
+}
