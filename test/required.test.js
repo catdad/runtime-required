@@ -33,6 +33,7 @@ test('finds all modules in require chain', async t => {
   t.deepEqual(files(result.stdout), [
     { type: 'file', id: resolve('fixtures/files/test1.js') },
     { type: 'file', id: resolve('fixtures/files/test2.js') },
+    { type: 'module', id: resolve('node_modules/resolve-from/index.js') },
     { type: 'file', id: resolve('fixtures/files/test3.js') },
     { type: 'builtin', id: 'fs' },
     { type: 'builtin', id: 'path' },
