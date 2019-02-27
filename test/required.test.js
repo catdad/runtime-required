@@ -23,16 +23,20 @@ const resolve = relpath => {
   return path.resolve(root, relpath);
 };
 
+const files = stdout => {
+  return stdout.trim().split('\n').map(s => JSON.parse(s));
+};
+
 test('finds all modules in require chain', async t => {
   const result = await run('entry1.js');
 
-  t.deepEqual(result.stdout.trim().split('\n').map(s => s.trim()), [
-    resolve('fixtures/files/test1.js'),
-    resolve('fixtures/files/test2.js'),
-    resolve('fixtures/files/test3.js'),
-    'fs',
-    'path',
-    'http'
+  t.deepEqual(files(result.stdout), [
+    { type: 'file', id: resolve('fixtures/files/test1.js') },
+    { type: 'file', id: resolve('fixtures/files/test2.js') },
+    { type: 'file', id: resolve('fixtures/files/test3.js') },
+    { type: 'builtin', id: 'fs' },
+    { type: 'builtin', id: 'path' },
+    { type: 'builtin', id: 'http' }
   ]);
   t.is(result.stderr.trim(), '');
 });

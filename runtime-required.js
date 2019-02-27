@@ -6,6 +6,21 @@ const resolve = require('resolve-from');
 
 const events = new EventEmitter();
 
+const emit = (request, id) => {
+  let type = 'file';
+
+  if (request === id) {
+    type = 'builtin';
+  } else if (id.indexOf(path.join('node_modules', request)) > -1) {
+    type = 'module';
+  }
+
+  events.emit('file', {
+    type: type,
+    id: id
+  });
+};
+
 // this is a hack and I don't like it
 // if you know a better way to collect all required modules
 // please file an issue, I'd appreciate it very much
@@ -16,7 +31,7 @@ Module._load = function (request, parent) {
     const idpath = resolve.silent(path.dirname(parent.filename), request);
 
     if (idpath) {
-      events.emit('file', idpath);
+      emit(request, idpath);
     }
   }
 
