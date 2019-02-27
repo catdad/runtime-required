@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 const path = require('path');
 
-const { expect } = require('chai');
+const expect = require('chai').expect;
 const shellton = require('shellton');
 
 const root = path.resolve(__dirname, '..');

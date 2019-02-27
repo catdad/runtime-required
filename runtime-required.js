@@ -7,7 +7,7 @@ const resolve = require('resolve-from');
 const events = new EventEmitter();
 
 const emit = (request, id) => {
-  let type = 'file';
+  var type = 'file';
 
   if (request === id) {
     type = 'builtin';
