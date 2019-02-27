@@ -1,6 +1,8 @@
-import path from 'path';
-import test from 'ava';
-import shellton from 'shellton';
+/* eslint-env mocha */
+const path = require('path');
+
+const { expect } = require('chai');
+const shellton = require('shellton');
 
 const root = path.resolve(__dirname, '..');
 
@@ -27,10 +29,10 @@ const files = stdout => {
   return stdout.trim().split('\n').map(s => JSON.parse(s));
 };
 
-test('finds all modules in require chain', async t => {
+it('finds all modules in require chain', async () => {
   const result = await run('entry1.js');
 
-  t.deepEqual(files(result.stdout), [
+  expect(files(result.stdout)).to.deep.equal([
     { type: 'file', id: resolve('fixtures/files/test1.js') },
     { type: 'file', id: resolve('fixtures/files/test2.js') },
     { type: 'module', id: resolve('node_modules/resolve-from/index.js') },
@@ -39,5 +41,5 @@ test('finds all modules in require chain', async t => {
     { type: 'builtin', id: 'path' },
     { type: 'builtin', id: 'http' }
   ]);
-  t.is(result.stderr.trim(), '');
+  expect(result.stderr.trim()).to.equal('');
 });
