@@ -7,10 +7,14 @@
     "resolve-from": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.14.1"
+    "ava": "^1.2.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.1",
+    "eslint-plugin-ava": "^5.1.1",
+    "shellton": "^5.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava test/**/*.test.js"
   },
   "repository": {
     "type": "git",
