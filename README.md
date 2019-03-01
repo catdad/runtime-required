@@ -28,7 +28,7 @@ npm install runtime-required
 
 ## Usage
 
-### `runtime-required` → [`EventEmitter`](https://nodejs.org/api/events.html)
+### `require('runtime-required')` → [`EventEmitter`](https://nodejs.org/api/events.html)
 
 Yup, you just include it in your project and it exposes an event emitter. There is only a single `file` event, and it has the following properties:
 * **`type`** _{string}_: one of
