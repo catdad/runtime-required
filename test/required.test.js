@@ -38,7 +38,8 @@ it('finds all modules in require chain', () => {
       { type: 'file', id: resolve('fixtures/files/test3.js') },
       { type: 'builtin', id: 'fs' },
       { type: 'builtin', id: 'path' },
-      { type: 'builtin', id: 'http' }
+      { type: 'builtin', id: 'http' },
+      { type: 'file', id: resolve('fixtures/files/test4.js') }
     ]);
     expect(result.stderr.trim()).to.equal('');
   });

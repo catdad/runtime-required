@@ -9,10 +9,10 @@ const events = new EventEmitter();
 const emit = (request, id) => {
   var type = 'file';
 
-  if (request === id) {
-    type = 'builtin';
-  } else if (id.indexOf(path.join('node_modules', request)) > -1) {
+  if (id.indexOf(path.join('node_modules', request)) > -1) {
     type = 'module';
+  } else if (!path.parse(id).root) {
+    type = 'builtin';
   }
 
   events.emit('file', {
