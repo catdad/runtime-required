@@ -28,11 +28,14 @@ npm install runtime-required
 
 ## Usage
 
-### `runtimeRequired()` → [`EventEmitter`](https://nodejs.org/api/events.html)
+### `runtime-runtime` → [`EventEmitter`](https://nodejs.org/api/events.html)
 
-Yup, you just call it and it returns an event emitter. The events have the following properties:
-* `type` _{string}_: either `builtin` (node's default modules), `module` (ones that appear inside the `node_modules` directory), or `file` (from your own project... or I guess elsewhere on the filesystem).
-* `id` _{string}_: the identifier for this module. For `module` and `file` types, it will be a fully-resolved file path. For `builtin` types, it will be the name of the module.
+Yup, you just include it in your project and it exposes an event emitter. There is only a single `file` event, and it has the following properties:
+* **`type`** _{string}_: one of
+  * `builtin` (_node's default modules_)
+  * `module` (_ones that appear inside the `node_modules` directory_)
+  * `file` (_from your own project... or I guess elsewhere on the filesystem_)
+* **`id`** _{string}_: the identifier for this module. For `module` and `file` types, it will be a fully-resolved file path. For `builtin` types, it will be the name of the module.
 
 ## Example
 
