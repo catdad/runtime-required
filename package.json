@@ -27,5 +27,16 @@
   "homepage": "https://github.com/catdad/runtime-required#readme",
   "engines": {
     "node": ">=4.0.0"
-  }
+  },
+  "keywords": [
+    "require",
+    "analyse",
+    "event",
+    "source",
+    "runtime",
+    "required",
+    "modules",
+    "builtins",
+    "files"
+  ]
 }
