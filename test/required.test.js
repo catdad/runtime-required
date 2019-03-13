@@ -39,7 +39,9 @@ it('finds all modules in require chain', () => {
       { type: 'builtin', id: 'fs' },
       { type: 'builtin', id: 'path' },
       { type: 'builtin', id: 'http' },
-      { type: 'file', id: resolve('fixtures/files/test4.js') }
+      { type: 'file', id: resolve('fixtures/files/test4.js') },
+      { type: 'module', id: resolve('node_modules/lodash/_root.js') },
+      { type: 'module', id: resolve('node_modules/lodash/_freeGlobal.js') }
     ]);
     expect(result.stderr.trim()).to.equal('');
   });
