@@ -2,8 +2,6 @@ const path = require('path');
 const Module = require('module');
 const EventEmitter = require('events');
 
-const resolve = require('resolve-from');
-
 const events = new EventEmitter();
 
 const emit = (request, id) => {
@@ -26,13 +24,11 @@ const emit = (request, id) => {
 // please file an issue, I'd appreciate it very much
 // https://github.com/catdad/electronmon/issues/new
 const originalLoad = Module._load;
-Module._load = function (request, parent) {
-  if (parent) {
-    const idpath = resolve.silent(path.dirname(parent.filename), request);
+Module._load = function (request) {
+  const filename = Module._resolveFilename.apply(this, arguments);
 
-    if (idpath) {
-      emit(request, idpath);
-    }
+  if (filename && !require.cache[filename]) {
+    emit(request, filename);
   }
 
   return originalLoad.apply(this, arguments);
