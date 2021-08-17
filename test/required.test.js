@@ -32,9 +32,9 @@ const files = stdout => {
 it('finds all modules in require chain', () => {
   return run('entry1.js').then((result) => {
     expect(files(result.stdout)).to.deep.equal([
+      { type: 'file', id: resolve('fixtures/entry1.js') },
       { type: 'file', id: resolve('fixtures/files/test1.js') },
       { type: 'file', id: resolve('fixtures/files/test2.js') },
-      { type: 'module', id: resolve('node_modules/resolve-from/index.js') },
       { type: 'file', id: resolve('fixtures/files/test3.js') },
       { type: 'builtin', id: 'fs' },
       { type: 'builtin', id: 'path' },
